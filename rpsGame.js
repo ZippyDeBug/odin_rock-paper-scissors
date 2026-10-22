@@ -59,7 +59,7 @@ function getHumanChoice() {
             console.log(humanChoice);
             return humanChoice;
         }
-// Else start function again
+// Else show an invalid answer alert, start function again and Return the result of the function
         else {
             alert("Invalid answer");
             return getHumanChoice();
