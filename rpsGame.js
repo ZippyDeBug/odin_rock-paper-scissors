@@ -6,6 +6,115 @@ const gameRounds = 5
 function getRandomInt(max) {
     return Math.floor(Math.random() * max)
 }
+//Create a function to getComputerChoice select R P or S.
+//Call Random ineteger generate for a number between 0-2
+//if 0 then return rock
+//if 1 then return paper
+//if 2 then return scissors
+function getComputerChoice() {
+    const cpuChoice = getRandomInt(3); 
+    if (cpuChoice === 0) {
+        return "Rock";
+    }
+    
+    else if (cpuChoice === 1) {
+        return "Paper";
+    }
+
+    else {
+        return "Scissors";
+    }
+        
+}
+
+// Create a function to getHumanChoice.
+// Prompt user to provide answer - "rock, paper or scissors
+// amend returned answer to consistent casing
+// If value matches rock paper or scissors. Amend human variable to new value
+// Else show an invalid answer alert, start function again and Return the result of the function
+
+function getHumanChoice() {
+    let humanChoice = prompt (`Choose your weapon!\nRock, Paper or Scissors?`);
+
+    humanChoice = humanChoice.trim();
+    humanChoice = (humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1).toLowerCase());
+
+    if (humanChoice === "Rock" || humanChoice === "Paper" || humanChoice === "Scissors") {
+        console.log(humanChoice);
+        return humanChoice;
+        }
+        
+    else {
+        alert("Invalid answer");
+        return getHumanChoice();
+    } 
+}
+
+
+
+// Playing  a single round
+// Create a function for playRound, compare values of human and cpu
+// return a win lose or draw value.
+
+function playRound(human,cpu) {
+
+    if ( human === cpu) {
+        return "draw";
+    }
+
+    const humanWins = 
+    (human === "Rock" && cpu === "Scissors") ||
+    (human === "Scissors" && cpu === "Paper") || 
+    (human === "Paper" && cpu === "Rock");
+
+    if (humanWins)  {
+        return "win";
+    }
+        
+    else {
+        return "lose";
+    }
+    }
+
+    
+// create function playGame
+//Create a variable for human score and computer score value = 0
+// Create for loop number of rounds, If less than 5 increase by 1
+//Create a const variable to collect cpu choice.
+//Create a const variable to collect human choice.
+//create a round result variable to collect the result of each round
+// call play round for result
+// increase human score if win, computer score is lose.
+// call round winner message
+// when rounds = 5
+// call game winner message
+ 
+function playGame() {
+    
+    let humanScore = 0;
+    let computerScore = 0;
+
+    for (let i = 0; i < gameRounds; i++) {
+
+        const cpu = getComputerChoice();
+        const human = getHumanChoice();
+        const result = playRound(human,cpu);
+
+        if (result === "win") { 
+            humanScore++
+        }
+
+        if (result === "lose") { 
+            computerScore++
+        }
+
+    showRoundWinner(result, human, cpu, humanScore, computerScore);
+        }
+
+    showGameWinner(humanScore, computerScore)   
+        }
+
+
 
 //create function to show winner message for each round
 function showRoundWinner(result, human, cpu, humanScore, computerScore) {
@@ -56,115 +165,6 @@ function showGameWinner (humanScore, computerScore) {
         return;
     }
 }
-
-//Create a function to getComputerChoice select R P or S.
-//Randomly generate a integer number between 0-2
-//if 0 then return rock
-//if 1 then return paper
-//if 2 then return scissors
-function getComputerChoice() {
-    const cpuChoice = getRandomInt(3); 
-    if (cpuChoice === 0) {
-        return "Rock";
-    }
-    
-    else if (cpuChoice === 1) {
-        return "Paper";
-    }
-
-    else {
-        return "Scissors";
-    }
-        
-}
-
-// Create a function to getHumanChoice.
-// Prompt user to provide answer - "rock, paper or scissors
-// amend returned answer to consistent casing
-// If value matches rock paper or scissors. Amend human variable to new value
-// Else show an invalid answer alert, start function again and Return the result of the function
-
-function getHumanChoice() {
-    let humanChoice = prompt (`Choose your weapon!\nRock, Paper or Scissors?`);
-
-    humanChoice = humanChoice.trim();
-    humanChoice = (humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1).toLowerCase());
-
-    if (humanChoice === "Rock" || humanChoice === "Paper" || humanChoice === "Scissors") {
-        console.log(humanChoice);
-        return humanChoice;
-        }
-        
-    else {
-        alert("Invalid answer");
-        return getHumanChoice();
-    } 
-}
-
-
-// Playing  a single round
-// Create a function for playRound, compare values of human and cpu
-// return a win lose or draw value.
-
-function playRound(human,cpu) {
-
-    if ( human === cpu) {
-        return "draw";
-    }
-
-    const humanWins = 
-    (human === "Rock" && cpu === "Scissors") ||
-    (human === "Scissors" && cpu === "Paper") || 
-    (human === "Paper" && cpu === "Rock");
-
-    if (humanWins)  {
-        return "win";
-    }
-        
-    else {
-        return "lose";
-    }
-    }
-
-
-    
-// create function playGame
-//Create a variable for human score and computer score value = 0
-// Create for loop number of rounds, If less than 5 increase by 1
-//Create a const variable to collect cpu choice.
-//Create a const variable to collect human choice.
-//create a round result variable to collect the result of each round
-// call play round for result
-// increase human score if win, computer score is lose.
-// call round winner message
-// when rounds = 5
-// call game winner message
- 
-function playGame() {
-    
-    let humanScore = 0;
-    let computerScore = 0;
-
-    for (let i = 0; i < gameRounds; i++) {
-
-        const cpu = getComputerChoice();
-        const human = getHumanChoice();
-        const result = playRound(human,cpu);
-
-        if (result === "win") { 
-            humanScore++
-        }
-
-        if (result === "lose") { 
-            computerScore++
-        }
-
-    showRoundWinner(result, human, cpu, humanScore, computerScore);
-        }
-
-    showGameWinner(humanScore, computerScore)   
-        }
-
 
 //Call to play the game NOW
 playGame() 
