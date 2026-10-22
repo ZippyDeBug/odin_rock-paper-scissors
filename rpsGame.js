@@ -35,13 +35,13 @@ function getRandomInt(max) {
 function getComputerChoice() {
         let cpuChoice = getRandomInt(3); 
         if (cpuChoice === 0) {
-            return "rock";
+            return "Rock";
         }
         else if (cpuChoice === 1) {
-            return "paper";
+            return "Paper";
         }
         else {
-            return "scissors";
+            return "Scissors";
         }
         console.log(cpuChoice)
         
@@ -58,8 +58,8 @@ function getHumanChoice() {
        let humanChoice = prompt `Choose your weapon! 
         Rock, Paper or Scissors?`;
 
-        humanChoice = humanChoice.slice(0).toLowerCase();  
-        if (humanChoice === "rock" || humanChoice === "paper" || humanChoice === "scissors") {
+        humanChoice = (humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1).toLowerCase());  
+        if (humanChoice === "Rock" || humanChoice === "Paper" || humanChoice === "Scissors") {
             console.log(humanChoice);
             return humanChoice;
         }
@@ -82,33 +82,35 @@ function getHumanChoice() {
     //Anything else, Computer score increases by 1, The  message states "You lose! computerChoice beats humanChoice!"
 
 function playRound(human,cpu) {
-    if (human == "rock" && cpu === "scissors" || 
-        human === "scissors" && cpu === "paper" || 
-        human === "paper" && cpu === "rock") {    
+    if (human == "Rock" && cpu === "Scissors" || 
+        human === "Scissors" && cpu === "Paper" || 
+        human === "Paper" && cpu === "Rock") {    
         humanScore++ ; 
-        console.log(`You win!
-            ${human} beats ${cpu}!`);
-        alert(`You win!
-            ${human} beats ${cpu}!`);
+        console.log(`Computer plays ${cpu}, ${human} beats ${cpu}
+Human ${humanScore}    Computer ${computerScore}`);
+
+        alert(`Computer plays ${cpu}, ${human} beats ${cpu}!
+You ${humanScore}    Computer ${computerScore}`);
         }
+
     else if ( human == cpu) {    
-        console.log(`A Draw!?
-            ${human} draws with ${cpu}!`);
-        alert(`A Draw!?
-            ${human} draws with ${cpu}!`);
+        console.log(`Computer plays ${cpu}, ${human} draws with ${cpu}!
+Human ${humanScore}    Computer ${computerScore}`);
+        alert(`Computer plays ${cpu}, ${human} draws with ${cpu}!
+You ${humanScore}    Computer ${computerScore}`);
         }
     else if (human === "undefined") {
         console.log("undefined");
-
+    
     }
     else {
         computerScore++;
-        console.log(`You lose!
-            ${human} is beaten by ${cpu}!` )
-        alert(`You lose!
-            ${human} is beaten by ${cpu}!` )
-
+        console.log(`Computer plays ${cpu}, ${human} is beaten by ${cpu}!
+Human ${humanScore}    Computer ${computerScore}` )
+        alert(`Computer plays ${cpu}, ${human} is beaten by ${cpu}!
+You ${humanScore}    Computer ${computerScore}` )
     }
+    console.log(`Human Score = ${humanScore}       Computer Score = ${computerScore} `  );
     }
 
     
@@ -126,19 +128,25 @@ function playGame() {
         }}
     if (gamesPlayed >= gameRounds) { 
             if (humanScore > computerScore) {
-                console.log(`Congratulations! 
-                    You Win!`);
+                console.log(`Human Wins
+Human ${humanScore}    Computer ${computerScore}`);
                 alert(`Congratulations! 
-                    You Win!`);
+You Win!
+You ${humanScore}    Computer ${computerScore}`);
                 }
             else if (humanScore < computerScore) {
-                console.log("Bad luck, you lose!");
-                alert("Bad luck, you lose!");
+                console.log(`Human loses.
+Human ${humanScore}    Computer ${computerScore}`);
+                alert(`Bad luck, you lose!
+You ${humanScore}    Computer ${computerScore}`);
                 }
 
                 else if (humanScore == computerScore) {
-                console.log("A tie!! Care to try again?");
-                alert("A tie!! Care to try again?");
+                console.log(`A tie!!
+Human ${humanScore}    Computer ${computerScore}`);
+                alert(`A tie!! 
+${humanScore}    Computer ${computerScore} 
+Care to try again?`);
                 }
 
                 else {
