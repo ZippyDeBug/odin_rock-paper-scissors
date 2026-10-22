@@ -62,7 +62,7 @@ function getHumanChoice() {
 // Else start function again
         else {
             alert("Invalid answer");
-            getHumanChoice()
+            return getHumanChoice();
         } 
 }
 
@@ -94,6 +94,10 @@ function playRound(human,cpu) {
         alert(`A Draw!?
             ${human} draws with ${cpu}!`);
         }
+    else if (human === "undefined") {
+        console.log("undefined");
+
+    }
     else {
         computerScore++;
         console.log(`You lose!
