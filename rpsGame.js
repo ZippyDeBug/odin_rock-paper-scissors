@@ -125,8 +125,7 @@ function playGame() {
     for (gamesPlayed = 0; gamesPlayed < gameRounds; gamesPlayed++) {
         playRound(humanSelection(),computerSelection())
         }
-    if (gamesPlayed >= gameRounds) { 
-            if (humanScore > computerScore) {
+    if (humanScore > computerScore) {
                 console.log(`Final Score
 Human ${humanScore}    Computer ${computerScore}
 Human Wins`);
@@ -151,8 +150,7 @@ You ${humanScore}    Computer ${computerScore}
 Care to try again?`);
                 }
         }
-     
-    }
+
 
 //Call to play the game NOW
 playGame() 
