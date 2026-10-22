@@ -1,6 +1,6 @@
 console.log("hellos World!")
 
-    //Create a const variable for computerSelection value = getComputerChoice
+//Create a const variable for computerSelection value = getComputerChoice
 const computerSelection = getComputerChoice;
 
 //Create a const variable for humanSelection, value = getHumanChoice
@@ -8,7 +8,7 @@ const humanSelection = getHumanChoice;
 
 
 // Play 5 rounds.
-//create variable for gameRounds, value set at 5. and hames played at 0
+//create variable for gameRounds, value set at 5. and games played at 0
 const gameRounds = Number(5)
 let gamesPlayed = Number(0)
 
@@ -28,18 +28,18 @@ function getRandomInt(max) {
 }
 
 //Create a function to getComputerChoice select R P or S.
-function getComputerChoice() {
 //Randomly generate a integer number between 0-2
-        let cpuChoice = getRandomInt(3); 
 //if 0 then return rock
+//if 1 then return paper
+//if 2 then return scissors
+function getComputerChoice() {
+        let cpuChoice = getRandomInt(3); 
         if (cpuChoice === 0) {
             return "rock";
         }
-//if 1 then return paper
         else if (cpuChoice === 1) {
             return "paper";
         }
-//if 2 then return scissors
         else {
             return "scissors";
         }
@@ -48,18 +48,21 @@ function getComputerChoice() {
 }
 
 // Create a function to getHumanChoice.
-function getHumanChoice() {
 // Prompt user to provide answer - "rock, paper or scissors
+// amend returned answer to consistent casing
+// If value matches rock paper or scissors. Amend human variable to new value
+// Else show an invalid answer alert, start function again and Return the result of the function
+
+function getHumanChoice() {
+
        let humanChoice = prompt `Choose your weapon! 
         Rock, Paper or Scissors?`;
-// amend returned answer to consistent casing
+
         humanChoice = humanChoice.slice(0).toLowerCase();  
-// If value matches rock paper or scissors. Amend human variable to new value
         if (humanChoice === "rock" || humanChoice === "paper" || humanChoice === "scissors") {
             console.log(humanChoice);
             return humanChoice;
         }
-// Else show an invalid answer alert, start function again and Return the result of the function
         else {
             alert("Invalid answer");
             return getHumanChoice();
@@ -145,7 +148,7 @@ function playGame() {
      
     }
 
-    //Call to play the game NOW
+//Call to play the game NOW
 playGame()
 
 
