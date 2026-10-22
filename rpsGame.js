@@ -109,8 +109,7 @@ You ${humanScore}    Computer ${computerScore}`);
 Human ${humanScore}    Computer ${computerScore}` )
         alert(`Computer plays ${cpu}, ${human} is beaten by ${cpu}!
 You ${humanScore}    Computer ${computerScore}` )
-    }
-    console.log(`Human Score = ${humanScore}       Computer Score = ${computerScore} `  );
+    };
     }
 
     
@@ -128,17 +127,20 @@ function playGame() {
         }}
     if (gamesPlayed >= gameRounds) { 
             if (humanScore > computerScore) {
-                console.log(`Human Wins
-Human ${humanScore}    Computer ${computerScore}`);
-                alert(`Congratulations! 
-You Win!
-You ${humanScore}    Computer ${computerScore}`);
+                console.log(`Final Score
+Human ${humanScore}    Computer ${computerScore}
+Human Wins`);
+                alert(`Final Score
+You ${humanScore}    Computer ${computerScore}
+Congratulations! You Win!`);
                 }
             else if (humanScore < computerScore) {
-                console.log(`Human loses.
-Human ${humanScore}    Computer ${computerScore}`);
-                alert(`Bad luck, you lose!
-You ${humanScore}    Computer ${computerScore}`);
+                console.log(`Final Score
+Human ${humanScore}    Computer ${computerScore}
+Human loses`);
+                alert(`Final Score
+You ${humanScore}    Computer ${computerScore}
+Bad luck, you lose!`);
                 }
 
                 else if (humanScore == computerScore) {
