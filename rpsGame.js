@@ -9,18 +9,16 @@ const humanSelection = getHumanChoice;
 
 // Play 5 rounds.
 //create variable for gameRounds, value set at 5. and games played at 0
-const gameRounds = Number(5)
-let gamesPlayed = Number(0)
+const gameRounds = 5
+let gamesPlayed = 0
 
 
 //Create a const variable for humanScore value = 0
-let humanScore = Number(0)
+let humanScore = 0
 
 //Create  a const variable for computerScore value = 0
-let computerScore = Number(0)
+let computerScore = 0
 
-//Create a const variable for numberOfGames  , value = humanScore + computerScore.
-let numberOfGames = (humanScore + computerScore)
 
 //Create a function to generate a random integer number between 0 and 2.
 function getRandomInt(max) {
@@ -55,8 +53,8 @@ function getComputerChoice() {
 
 function getHumanChoice() {
 
-       let humanChoice = prompt `Choose your weapon! 
-        Rock, Paper or Scissors?`;
+       let humanChoice = prompt (`Choose your weapon! 
+        Rock, Paper or Scissors?`);
 
         humanChoice = (humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1).toLowerCase());  
         if (humanChoice === "Rock" || humanChoice === "Paper" || humanChoice === "Scissors") {
@@ -99,7 +97,7 @@ Human ${humanScore}    Computer ${computerScore}`);
         alert(`Computer plays ${cpu}, ${human} draws with ${cpu}!
 You ${humanScore}    Computer ${computerScore}`);
         }
-    else if (human === "undefined") {
+    else if (human === undefined) {
         console.log("undefined");
     
     }
@@ -114,6 +112,7 @@ You ${humanScore}    Computer ${computerScore}` )
 
     
 // create function playGame
+//reset score
 // Create for loop for gameCount,  If less than 5, increase by 1, 
 // Else gameCount equal to or greater than 5,
 // if human score > computer score
@@ -121,10 +120,11 @@ You ${humanScore}    Computer ${computerScore}` )
 // Else message "Bad luck, computer wins!"
  
 function playGame() {
+    humanScore = 0;
+    computerScore = 0;
     for (gamesPlayed = 0; gamesPlayed < gameRounds; gamesPlayed++) {
-        if (gamesPlayed < gameRounds) {
-            playRound(humanSelection(),computerSelection())
-        }}
+        playRound(humanSelection(),computerSelection())
+        }
     if (gamesPlayed >= gameRounds) { 
             if (humanScore > computerScore) {
                 console.log(`Final Score
@@ -147,19 +147,15 @@ Bad luck, you lose!`);
                 console.log(`A tie!!
 Human ${humanScore}    Computer ${computerScore}`);
                 alert(`A tie!! 
-${humanScore}    Computer ${computerScore} 
+You ${humanScore}    Computer ${computerScore} 
 Care to try again?`);
-                }
-
-                else {
-                return
                 }
         }
      
     }
 
 //Call to play the game NOW
-playGame()
+playGame() 
 
 
 
